@@ -1,5 +1,4 @@
 ARG PG_MAJOR=16
-ARG PG_MAJOR
 
 # Use the PostGIS image as the base
 FROM postgis/postgis:$PG_MAJOR-3.4
