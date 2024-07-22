@@ -1,5 +1,8 @@
+ARG PG_MAJOR=16
+ARG PG_MAJOR
+
 # Use the PostGIS image as the base
-FROM postgis/postgis:13-3.4
+FROM postgis/postgis:$PG_MAJOR-3.4
 
 # Install necessary packages
 RUN apt-get update \
@@ -17,7 +20,7 @@ RUN apt-get update \
     && make install \
     # Clean up unnecessary files
     && cd - \
-    && apt-get purge -y --auto-remove build-essential postgresql-server-dev-13 libpq-dev wget git \
+    && apt-get purge -y --auto-remove build-essential postgresql-server-dev-$PG_MAJOR libpq-dev wget git \
     && rm -rf /tmp/pgvector
 
 # Copy initialization scripts
